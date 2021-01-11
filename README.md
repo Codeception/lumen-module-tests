@@ -4,7 +4,14 @@
 
 Minimal site containing functional tests for [Codeception Module Lumen](https://github.com/Codeception/module-lumen).
 
-## Installation
+## Usage
+
+The main purpose of this project is to verify the proper functioning of the `Codeception Module Lumen` in a minimal Lumen installation.
+
+You can also **fork it** and use it to reproduce a bug or unexpected behavior for analysis.
+If that's your case, just add a link to your fork next to the description of your issue in the module's repository.
+
+Lastly, if you just want to see the module in action and run the tests yourself on your local machine just:
 
 1. Clone the repo:
    ```shell
@@ -21,7 +28,7 @@ Minimal site containing functional tests for [Codeception Module Lumen](https://
    php artisan migrate --seed
    ```
 
-## Usage
+Then, go to the project directory and run:
 
 ```shell
 vendor/bin/codecept run Functional
