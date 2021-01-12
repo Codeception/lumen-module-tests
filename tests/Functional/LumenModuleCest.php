@@ -88,7 +88,9 @@ final class LumenModuleCest
 
     public function have(FunctionalTester $I)
     {
-        //TODO
+        $attributes = ['email' => 'jane_doe@gmail.com'];
+        $I->have(User::class, $attributes);
+        $I->seeRecord(User::class, $attributes);
     }
 
     public function haveApplicationHandler(FunctionalTester $I)
@@ -118,7 +120,19 @@ final class LumenModuleCest
 
     public function haveRecord(FunctionalTester $I)
     {
-        //TODO
+        // With table name
+        $id = $I->haveRecord('users', [
+            'email' => 'jane_doe@gmail.com',
+            'password' => '123456'
+        ]);
+        $I->seeRecord('users', ['id' => $id, 'email' => 'jane_doe@gmail.com']);
+
+        // With model class
+        $I->haveRecord(User::class, [
+            'email' => 'johndoe@example.com',
+            'password' => '123456'
+        ]);
+        $I->seeRecord(User::class, ['email' => 'johndoe@example.com']);
     }
 
     public function haveSingleton(FunctionalTester $I)
