@@ -20,6 +20,7 @@ final class User extends Model implements AuthenticatableContract, AuthorizableC
     /** @var array */
     protected $fillable = [
         'email',
+        'password'
         //'api_token'
     ];
 
