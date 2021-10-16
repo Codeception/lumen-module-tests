@@ -13,7 +13,9 @@ use Laravel\Lumen\Auth\Authorizable;
 
 final class User extends Model implements AuthenticatableContract, AuthorizableContract
 {
-    use Authenticatable, Authorizable, HasFactory;
+    use Authenticatable;
+    use Authorizable;
+    use HasFactory;
 
     /** @var string */
     protected $table = 'users';
@@ -25,7 +27,7 @@ final class User extends Model implements AuthenticatableContract, AuthorizableC
         //'api_token'
     ];
 
-    /** @var array */
+    /** @var string[] */
     protected $hidden = [
         'password',
         //'api_token'
