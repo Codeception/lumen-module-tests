@@ -6,23 +6,18 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Contracts\Auth\Factory as Auth;
+use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 
 final class Authenticate
 {
-    /** @var Auth */
-    protected $auth;
-
-    public function __construct(Auth $auth)
+    public function handle(Request $request, Closure $next, $guard = null): SymfonyResponse
     {
-        $this->auth = $auth;
-    }
-
-    public function handle(Request $request, Closure $next, $guard = null)
-    {
-        if ($this->auth->guard($guard)->guest()) {
-            return response('Unauthorized.', Response::HTTP_UNAUTHORIZED);
+        $auth = app()->get(Auth::class);
+        if ($auth->guard($guard)->guest()) {
+            $responseFactory = app()->get(ResponseFactory::class);
+            return $responseFactory->make('Unauthorized.', SymfonyResponse::HTTP_UNAUTHORIZED);
         }
 
         return $next($request);
