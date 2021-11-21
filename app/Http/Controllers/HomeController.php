@@ -12,6 +12,7 @@ final class HomeController extends AbstractController
 {
     public function __invoke(Request $request): Renderable
     {
-        return app()->make('view')->make('home');
+        $view = app()->get(View::class);
+        return $view->make('home');
     }
 }
