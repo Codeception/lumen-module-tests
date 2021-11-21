@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use Illuminate\Http\RedirectResponse;
-use Illuminate\View\View;
+use Illuminate\Routing\Redirector;
 
 final class TestController
 {
@@ -16,7 +16,7 @@ final class TestController
 
     public function complexRoute(string $param1, string $param2): string
     {
-        return "Complex route with parameters $param1 and $param2";
+        return "Complex route with parameters {$param1} and {$param2}";
     }
 
     public function secure(): string
@@ -26,6 +26,7 @@ final class TestController
 
     public function redirect(): RedirectResponse
     {
-        return redirect('/');
+        $redirector = app()->get(Redirector::class);
+        return $redirector->back('/');
     }
 }
