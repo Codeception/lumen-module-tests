@@ -15,20 +15,16 @@
         "laravel/lumen-framework": "^8.3"
     },
     "require-dev": {
-        "codeception/codeception": "^4.1",
-        "codeception/module-asserts": "^2.0",
-        "codeception/module-lumen": "^2.0 | *@dev",
-        "codeception/module-phpbrowser": "^2.0",
-        "fakerphp/faker": "^1.16",
-        "phpunit/phpunit": "^9.5"
+        "codeception/codeception": "^5.0.0-RC1",
+        "codeception/module-asserts": "^3.0",
+        "codeception/module-lumen": "^3.0",
+        "codeception/module-phpbrowser": "^3.0",
+        "fakerphp/faker": "^1.16"
     },
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true,
-        "platform": {
-            "php": "7.4.0"
-        }
+        "sort-packages": true
     },
     "autoload": {
         "psr-4": {
